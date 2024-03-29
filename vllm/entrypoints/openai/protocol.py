@@ -73,7 +73,8 @@ class ChatCompletionRequest(BaseModel):
     presence_penalty: Optional[float] = 0.0
     response_format: Optional[ResponseFormat] = None
     seed: Optional[int] = None
-    stop: Optional[Union[str, List[str]]] = Field(default_factory=list)
+    #stop: Optional[Union[str, List[str]]] = Field(default_factory=list)
+    stop: Optional[Union[str, List[str]]] = ['<|im_end|>','<|im_start|>']
     stream: Optional[bool] = False
     temperature: Optional[float] = 0.7
     top_p: Optional[float] = 1.0
