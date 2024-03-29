@@ -154,6 +154,10 @@ class OpenAIServing:
             return
         if request.model in [lora.lora_name for lora in self.lora_requests]:
             return
+        ### edit starts, bypass model name checking
+        request.model = self.served_model
+        return
+        ### edit ends, bypass model name checking
         return self.create_error_response(
             message=f"The model `{request.model}` does not exist.",
             err_type="NotFoundError",
