@@ -9,10 +9,6 @@
 Easy, fast, and cheap LLM serving for everyone
 </h3>
 
-<p align="center">
-| <a href="https://docs.vllm.ai"><b>Documentation</b></a> | <a href="https://vllm.ai"><b>Blog</b></a> | <a href="https://arxiv.org/abs/2309.06180"><b>Paper</b></a> | <a href="https://discord.gg/jz7wjKhh6g"><b>Discord</b></a> |
-
-</p>
 
 ---
 
@@ -32,3 +28,7 @@ requests.post('http://serv-url.com/v1/chat/completions',json={
 ```
 中model的参数就必须暴露启动时的路径
 因此在只有一个模型serving的场景下，bypass了模型名校验，可以使用任意名称作为model参数调用
+modifications are in ```vllm/entrypoints/openai/serving_engine.py```
+
+add <|im_end|>,<|im_start|> as default stop tokens in:
+```/vllm/entrypoints/openai/protocol.py```
